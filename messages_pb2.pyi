@@ -60,8 +60,8 @@ class SaeMessage(_message.Message):
     detections: _containers.RepeatedCompositeFieldContainer[Detection]
     frame: VideoFrame
     metrics: Metrics
-    trajectory: _containers.RepeatedCompositeFieldContainer[Trajectory]
-    def __init__(self, frame: _Optional[_Union[VideoFrame, _Mapping]] = ..., detections: _Optional[_Iterable[_Union[Detection, _Mapping]]] = ..., trajectory: _Optional[_Iterable[_Union[Trajectory, _Mapping]]] = ..., metrics: _Optional[_Union[Metrics, _Mapping]] = ...) -> None: ...
+    trajectory: Trajectory
+    def __init__(self, frame: _Optional[_Union[VideoFrame, _Mapping]] = ..., detections: _Optional[_Iterable[_Union[Detection, _Mapping]]] = ..., trajectory: _Optional[_Union[Trajectory, _Mapping]] = ..., metrics: _Optional[_Union[Metrics, _Mapping]] = ...) -> None: ...
 
 class Shape(_message.Message):
     __slots__ = ["channels", "height", "width"]

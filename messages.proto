@@ -7,7 +7,7 @@ option java_package = "de.starwit.visionapi";
 message SaeMessage {
   VideoFrame frame = 1;
   repeated Detection detections = 2;  
-  repeated Trajectory trajectory = 3;
+  Trajectory trajectory = 3;
   Metrics metrics = 99;
 }
 
