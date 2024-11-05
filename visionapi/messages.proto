@@ -6,7 +6,8 @@ option java_package = "de.starwit.visionapi";
 
 message SaeMessage {
   VideoFrame frame = 1;
-  repeated Detection detections = 2;
+  repeated Detection detections = 2;  
+  Trajectory trajectory = 3;
   Metrics metrics = 99;
 }
 
@@ -24,12 +25,14 @@ message Shape {
   uint32 channels = 3;
 }
 
+
 message Detection {
   BoundingBox bounding_box = 1;
   float confidence = 2;
   uint32 class_id = 3;
-  bytes object_id = 4;
+  int32 object_id = 4;
   GeoCoordinate geo_coordinate = 5;
+  repeated float feature = 6;  // Ensure this line is added 
 }
 
 message BoundingBox {
@@ -47,4 +50,26 @@ message GeoCoordinate {
 message Metrics {
   uint32 detection_inference_time_us = 1;
   uint32 tracking_inference_time_us = 2;
+  uint32 feature_extraction_time_us = 3;
 }
+
+message Trajectory {
+  map<string, TrackletsByCamera> cameras = 1;
+}
+
+message TrackletsByCamera {
+  map<string, Tracklet> tracklets = 1;
+}
+
+message Tracklet {
+  repeated float mean_feature = 3;
+  string status = 4;  
+  float start_time = 5;
+  float end_time = 6;
+  string entry_zone = 7;
+  string exit_zone = 8;
+  repeated Detection detections_info = 9;
+  uint32 age =10;
+}
+
+// retrieved_tacklet = trajectory.cameras[cam_id].tracklets[track_id]
