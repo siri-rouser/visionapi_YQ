@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "visionapi-yq"
+version = "0.1.0"
+description = ""
+authors = ["Yuqiang Lin <yl4300@bath.ac.uk>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+google = "^3.0.0"
+protobuf = "^5.27.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
