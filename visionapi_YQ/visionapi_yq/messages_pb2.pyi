@@ -85,13 +85,13 @@ class Tracklet(_message.Message):
     STATUS_FIELD_NUMBER: _ClassVar[int]
     age: int
     detections_info: _containers.RepeatedCompositeFieldContainer[Detection]
-    end_time: float
+    end_time: int
     entry_zone: str
     exit_zone: str
     mean_feature: _containers.RepeatedScalarFieldContainer[float]
-    start_time: float
+    start_time: int
     status: str
-    def __init__(self, mean_feature: _Optional[_Iterable[float]] = ..., status: _Optional[str] = ..., start_time: _Optional[float] = ..., end_time: _Optional[float] = ..., entry_zone: _Optional[str] = ..., exit_zone: _Optional[str] = ..., detections_info: _Optional[_Iterable[_Union[Detection, _Mapping]]] = ..., age: _Optional[int] = ...) -> None: ...
+    def __init__(self, mean_feature: _Optional[_Iterable[float]] = ..., status: _Optional[str] = ..., start_time: _Optional[int] = ..., end_time: _Optional[int] = ..., entry_zone: _Optional[str] = ..., exit_zone: _Optional[str] = ..., detections_info: _Optional[_Iterable[_Union[Detection, _Mapping]]] = ..., age: _Optional[int] = ...) -> None: ...
 
 class TrackletsByCamera(_message.Message):
     __slots__ = ["tracklets"]

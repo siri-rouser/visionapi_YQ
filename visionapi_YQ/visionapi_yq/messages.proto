@@ -64,8 +64,8 @@ message TrackletsByCamera {
 message Tracklet {
   repeated float mean_feature = 3;
   string status = 4;  
-  float start_time = 5;
-  float end_time = 6;
+  uint64 start_time = 5;
+  uint64 end_time = 6;
   string entry_zone = 7;
   string exit_zone = 8;
   repeated Detection detections_info = 9;
