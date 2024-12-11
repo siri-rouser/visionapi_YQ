@@ -42,14 +42,16 @@ class GeoCoordinate(_message.Message):
     def __init__(self, latitude: _Optional[float] = ..., longitude: _Optional[float] = ...) -> None: ...
 
 class Metrics(_message.Message):
-    __slots__ = ["detection_inference_time_us", "feature_extraction_time_us", "tracking_inference_time_us"]
+    __slots__ = ["detection_inference_time_us", "feature_extraction_time_us", "merge_inference_time_us", "tracking_inference_time_us"]
     DETECTION_INFERENCE_TIME_US_FIELD_NUMBER: _ClassVar[int]
     FEATURE_EXTRACTION_TIME_US_FIELD_NUMBER: _ClassVar[int]
+    MERGE_INFERENCE_TIME_US_FIELD_NUMBER: _ClassVar[int]
     TRACKING_INFERENCE_TIME_US_FIELD_NUMBER: _ClassVar[int]
     detection_inference_time_us: int
     feature_extraction_time_us: int
+    merge_inference_time_us: int
     tracking_inference_time_us: int
-    def __init__(self, detection_inference_time_us: _Optional[int] = ..., tracking_inference_time_us: _Optional[int] = ..., feature_extraction_time_us: _Optional[int] = ...) -> None: ...
+    def __init__(self, detection_inference_time_us: _Optional[int] = ..., tracking_inference_time_us: _Optional[int] = ..., feature_extraction_time_us: _Optional[int] = ..., merge_inference_time_us: _Optional[int] = ...) -> None: ...
 
 class SaeMessage(_message.Message):
     __slots__ = ["detections", "frame", "metrics", "trajectory"]

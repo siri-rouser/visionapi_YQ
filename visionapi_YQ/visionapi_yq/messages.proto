@@ -51,6 +51,7 @@ message Metrics {
   uint32 detection_inference_time_us = 1;
   uint32 tracking_inference_time_us = 2;
   uint32 feature_extraction_time_us = 3;
+  uint32 merge_inference_time_us = 4;
 }
 
 message Trajectory {
