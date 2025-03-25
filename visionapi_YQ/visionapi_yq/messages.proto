@@ -40,6 +40,7 @@ message BoundingBox {
   float min_y = 2;
   float max_x = 3;
   float max_y = 4;
+  uint64 timestamp_utc_ms = 5;
 }
 
 message GeoCoordinate {
@@ -71,6 +72,12 @@ message Tracklet {
   string exit_zone = 8;
   repeated Detection detections_info = 9;
   uint32 age = 10;
+  MotionVector motion_vector = 11;
+}
+
+message MotionVector {
+  float x = 1;
+  float y = 2;
 }
 
 // retrieved_tacklet = trajectory.cameras[cam_id].tracklets[track_id]
