@@ -101,9 +101,11 @@ class Detection(google.protobuf.message.Message):
     OBJECT_ID_FIELD_NUMBER: builtins.int
     GEO_COORDINATE_FIELD_NUMBER: builtins.int
     FEATURE_FIELD_NUMBER: builtins.int
+    TIMESTAMP_UTC_MS_FIELD_NUMBER: builtins.int
     confidence: builtins.float
     class_id: builtins.int
     object_id: builtins.int
+    timestamp_utc_ms: builtins.int
     @property
     def bounding_box(self) -> global___BoundingBox: ...
     @property
@@ -121,9 +123,10 @@ class Detection(google.protobuf.message.Message):
         object_id: builtins.int = ...,
         geo_coordinate: global___GeoCoordinate | None = ...,
         feature: collections.abc.Iterable[builtins.float] | None = ...,
+        timestamp_utc_ms: builtins.int = ...,
     ) -> None: ...
     def HasField(self, field_name: typing.Literal["bounding_box", b"bounding_box", "geo_coordinate", b"geo_coordinate"]) -> builtins.bool: ...
-    def ClearField(self, field_name: typing.Literal["bounding_box", b"bounding_box", "class_id", b"class_id", "confidence", b"confidence", "feature", b"feature", "geo_coordinate", b"geo_coordinate", "object_id", b"object_id"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["bounding_box", b"bounding_box", "class_id", b"class_id", "confidence", b"confidence", "feature", b"feature", "geo_coordinate", b"geo_coordinate", "object_id", b"object_id", "timestamp_utc_ms", b"timestamp_utc_ms"]) -> None: ...
 
 global___Detection = Detection
 
@@ -135,12 +138,10 @@ class BoundingBox(google.protobuf.message.Message):
     MIN_Y_FIELD_NUMBER: builtins.int
     MAX_X_FIELD_NUMBER: builtins.int
     MAX_Y_FIELD_NUMBER: builtins.int
-    TIMESTAMP_UTC_MS_FIELD_NUMBER: builtins.int
     min_x: builtins.float
     min_y: builtins.float
     max_x: builtins.float
     max_y: builtins.float
-    timestamp_utc_ms: builtins.int
     def __init__(
         self,
         *,
@@ -148,9 +149,8 @@ class BoundingBox(google.protobuf.message.Message):
         min_y: builtins.float = ...,
         max_x: builtins.float = ...,
         max_y: builtins.float = ...,
-        timestamp_utc_ms: builtins.int = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing.Literal["max_x", b"max_x", "max_y", b"max_y", "min_x", b"min_x", "min_y", b"min_y", "timestamp_utc_ms", b"timestamp_utc_ms"]) -> None: ...
+    def ClearField(self, field_name: typing.Literal["max_x", b"max_x", "max_y", b"max_y", "min_x", b"min_x", "min_y", b"min_y"]) -> None: ...
 
 global___BoundingBox = BoundingBox
 

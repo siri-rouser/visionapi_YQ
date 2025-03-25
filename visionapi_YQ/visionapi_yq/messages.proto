@@ -33,6 +33,7 @@ message Detection {
   int32 object_id = 4;
   GeoCoordinate geo_coordinate = 5;
   repeated float feature = 6;  // Ensure this line is added 
+  uint64 timestamp_utc_ms = 7;
 }
 
 message BoundingBox {
@@ -40,7 +41,6 @@ message BoundingBox {
   float min_y = 2;
   float max_x = 3;
   float max_y = 4;
-  uint64 timestamp_utc_ms = 5;
 }
 
 message GeoCoordinate {
