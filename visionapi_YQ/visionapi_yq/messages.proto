@@ -17,6 +17,7 @@ message VideoFrame {
   Shape shape = 3;
   bytes frame_data = 4;
   bytes frame_data_jpeg = 5;
+  uint32 frame_id =6;
 }
 
 message Shape {
