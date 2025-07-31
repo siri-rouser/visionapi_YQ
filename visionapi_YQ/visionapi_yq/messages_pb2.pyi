@@ -18,10 +18,11 @@ class BoundingBox(_message.Message):
     def __init__(self, min_x: Optional[float] = ..., min_y: Optional[float] = ..., max_x: Optional[float] = ..., max_y: Optional[float] = ...) -> None: ...
 
 class Detection(_message.Message):
-    __slots__ = ["bounding_box", "class_id", "confidence", "feature", "frame_id", "geo_coordinate", "object_id", "timestamp_utc_ms"]
+    __slots__ = ["bounding_box", "class_id", "confidence", "cropped_img_jpeg", "feature", "frame_id", "geo_coordinate", "object_id", "timestamp_utc_ms"]
     BOUNDING_BOX_FIELD_NUMBER: ClassVar[int]
     CLASS_ID_FIELD_NUMBER: ClassVar[int]
     CONFIDENCE_FIELD_NUMBER: ClassVar[int]
+    CROPPED_IMG_JPEG_FIELD_NUMBER: ClassVar[int]
     FEATURE_FIELD_NUMBER: ClassVar[int]
     FRAME_ID_FIELD_NUMBER: ClassVar[int]
     GEO_COORDINATE_FIELD_NUMBER: ClassVar[int]
@@ -30,12 +31,13 @@ class Detection(_message.Message):
     bounding_box: BoundingBox
     class_id: int
     confidence: float
+    cropped_img_jpeg: bytes
     feature: _containers.RepeatedScalarFieldContainer[float]
     frame_id: int
     geo_coordinate: GeoCoordinate
     object_id: int
     timestamp_utc_ms: int
-    def __init__(self, bounding_box: Optional[Union[BoundingBox, Mapping]] = ..., confidence: Optional[float] = ..., class_id: Optional[int] = ..., object_id: Optional[int] = ..., geo_coordinate: Optional[Union[GeoCoordinate, Mapping]] = ..., feature: Optional[Iterable[float]] = ..., timestamp_utc_ms: Optional[int] = ..., frame_id: Optional[int] = ...) -> None: ...
+    def __init__(self, bounding_box: Optional[Union[BoundingBox, Mapping]] = ..., confidence: Optional[float] = ..., class_id: Optional[int] = ..., object_id: Optional[int] = ..., geo_coordinate: Optional[Union[GeoCoordinate, Mapping]] = ..., feature: Optional[Iterable[float]] = ..., timestamp_utc_ms: Optional[int] = ..., frame_id: Optional[int] = ..., cropped_img_jpeg: Optional[bytes] = ...) -> None: ...
 
 class GeoCoordinate(_message.Message):
     __slots__ = ["latitude", "longitude"]
