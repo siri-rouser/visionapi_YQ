@@ -36,6 +36,7 @@ message Detection {
   repeated float feature = 6;  // Ensure this line is added 
   uint64 timestamp_utc_ms = 7;
   uint32 frame_id =8;
+  bytes cropped_img_jpeg = 9;
 }
 
 message BoundingBox {
