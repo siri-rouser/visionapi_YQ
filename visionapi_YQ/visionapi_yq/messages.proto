@@ -68,14 +68,16 @@ message TrackletsByCamera {
 
 message Tracklet {
   repeated float mean_feature = 3;
-  string status = 4;  
+  TrackletStatus status = 4;  
   uint64 start_time = 5;
-  uint64 end_time = 6;
-  string entry_zone = 7;
-  string exit_zone = 8;
-  repeated Detection detections_info = 9;
-  uint32 age = 10;
-  MotionVector motion_vector = 11;
+  uint32 start_frame = 6;
+  uint32 end_frame = 7;
+  uint64 end_time = 8;
+  string entry_zone = 9;
+  string exit_zone = 10;
+  repeated Detection detections_info = 11;
+  uint32 age = 12;
+  MotionVector motion_vector = 13;
 }
 
 message MotionVector {
@@ -83,4 +85,10 @@ message MotionVector {
   float y = 2;
 }
 
+enum TrackletStatus {
+  UNKNOWN   = 0; 
+  ACTIVE    = 1;  
+  SEARCHING = 2; 
+  COMPLETED = 3; 
+}
 // retrieved_tacklet = trajectory.cameras[cam_id].tracklets[track_id]
