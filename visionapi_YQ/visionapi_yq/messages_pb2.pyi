@@ -7,7 +7,10 @@ from typing import ClassVar as _ClassVar, Iterable as _Iterable, Mapping as _Map
 ACTIVE: TrackletStatus
 COMPLETED: TrackletStatus
 DESCRIPTOR: _descriptor.FileDescriptor
+ENTRY: ZoneStatus
+EXIT: ZoneStatus
 SEARCHING: TrackletStatus
+UNDEFINED: ZoneStatus
 UNKNOWN: TrackletStatus
 
 class BoundingBox(_message.Message):
@@ -95,30 +98,28 @@ class Shape(_message.Message):
     def __init__(self, height: _Optional[int] = ..., width: _Optional[int] = ..., channels: _Optional[int] = ...) -> None: ...
 
 class Tracklet(_message.Message):
-    __slots__ = ["age", "detections_info", "end_frame", "end_time", "entry_zone", "exit_zone", "mean_feature", "motion_vector", "start_frame", "start_time", "status"]
+    __slots__ = ["age", "detections_info", "end_frame", "end_time", "mean_feature", "motion_vector", "start_frame", "start_time", "status", "zone"]
     AGE_FIELD_NUMBER: _ClassVar[int]
     DETECTIONS_INFO_FIELD_NUMBER: _ClassVar[int]
     END_FRAME_FIELD_NUMBER: _ClassVar[int]
     END_TIME_FIELD_NUMBER: _ClassVar[int]
-    ENTRY_ZONE_FIELD_NUMBER: _ClassVar[int]
-    EXIT_ZONE_FIELD_NUMBER: _ClassVar[int]
     MEAN_FEATURE_FIELD_NUMBER: _ClassVar[int]
     MOTION_VECTOR_FIELD_NUMBER: _ClassVar[int]
     START_FRAME_FIELD_NUMBER: _ClassVar[int]
     START_TIME_FIELD_NUMBER: _ClassVar[int]
     STATUS_FIELD_NUMBER: _ClassVar[int]
+    ZONE_FIELD_NUMBER: _ClassVar[int]
     age: int
     detections_info: _containers.RepeatedCompositeFieldContainer[Detection]
     end_frame: int
     end_time: int
-    entry_zone: str
-    exit_zone: str
     mean_feature: _containers.RepeatedScalarFieldContainer[float]
     motion_vector: MotionVector
     start_frame: int
     start_time: int
     status: TrackletStatus
-    def __init__(self, mean_feature: _Optional[_Iterable[float]] = ..., status: _Optional[_Union[TrackletStatus, str]] = ..., start_time: _Optional[int] = ..., start_frame: _Optional[int] = ..., end_frame: _Optional[int] = ..., end_time: _Optional[int] = ..., entry_zone: _Optional[str] = ..., exit_zone: _Optional[str] = ..., detections_info: _Optional[_Iterable[_Union[Detection, _Mapping]]] = ..., age: _Optional[int] = ..., motion_vector: _Optional[_Union[MotionVector, _Mapping]] = ...) -> None: ...
+    zone: Zone
+    def __init__(self, mean_feature: _Optional[_Iterable[float]] = ..., status: _Optional[_Union[TrackletStatus, str]] = ..., start_time: _Optional[int] = ..., start_frame: _Optional[int] = ..., end_frame: _Optional[int] = ..., end_time: _Optional[int] = ..., zone: _Optional[_Union[Zone, _Mapping]] = ..., detections_info: _Optional[_Iterable[_Union[Detection, _Mapping]]] = ..., age: _Optional[int] = ..., motion_vector: _Optional[_Union[MotionVector, _Mapping]] = ...) -> None: ...
 
 class TrackletsByCamera(_message.Message):
     __slots__ = ["tracklets"]
@@ -162,5 +163,20 @@ class VideoFrame(_message.Message):
     timestamp_utc_ms: int
     def __init__(self, source_id: _Optional[str] = ..., timestamp_utc_ms: _Optional[int] = ..., shape: _Optional[_Union[Shape, _Mapping]] = ..., frame_data: _Optional[bytes] = ..., frame_data_jpeg: _Optional[bytes] = ..., frame_id: _Optional[int] = ...) -> None: ...
 
+class Zone(_message.Message):
+    __slots__ = ["entry_zone_id", "entry_zone_type", "exit_zone_id", "exit_zone_type"]
+    ENTRY_ZONE_ID_FIELD_NUMBER: _ClassVar[int]
+    ENTRY_ZONE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    EXIT_ZONE_ID_FIELD_NUMBER: _ClassVar[int]
+    EXIT_ZONE_TYPE_FIELD_NUMBER: _ClassVar[int]
+    entry_zone_id: int
+    entry_zone_type: ZoneStatus
+    exit_zone_id: int
+    exit_zone_type: ZoneStatus
+    def __init__(self, entry_zone_id: _Optional[int] = ..., exit_zone_id: _Optional[int] = ..., entry_zone_type: _Optional[_Union[ZoneStatus, str]] = ..., exit_zone_type: _Optional[_Union[ZoneStatus, str]] = ...) -> None: ...
+
 class TrackletStatus(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
+    __slots__ = []
+
+class ZoneStatus(int, metaclass=_enum_type_wrapper.EnumTypeWrapper):
     __slots__ = []
